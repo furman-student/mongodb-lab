@@ -12,16 +12,13 @@ export default function Form() {
   return (
     <div className="container">
       <div className={styles.formWrapper}>
-
         <div className={styles.tabs}>
-
           <button
             className={styles.tab}
             data-active={currentForm === 'login'}
             onClick={() => setCurrentForm('login')}
           >
             Login
-
           </button>
           <button
             className={styles.tab}
@@ -30,9 +27,7 @@ export default function Form() {
           >
             Register
           </button>
-
         </div>
-
         {currentForm === 'login' ? <Login /> : <Register />}
       </div>
     </div>
