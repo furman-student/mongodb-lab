@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useContext, useEffect, useState } from 'react'
 import UsersContext from '@/utils/usersContext'
 
@@ -81,6 +81,5 @@ export default function Dashboard() {
 
         <Loader isLoading={isLoading} />
       </div>
-    </div>
-  )
+    </div>)
 }
