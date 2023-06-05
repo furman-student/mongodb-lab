@@ -2,10 +2,10 @@
 
 import { useContext } from "react"
 import { useForm } from "react-hook-form"
-import styles from '../styles/components/Form.module.scss'
+import styles from '@/styles/components/Form.module.scss'
 
-import UsersContext from "../utils/usersContext"
-import { API, regexPatterns } from "../utils/const"
+import UsersContext from "@/utils/usersContext"
+import { API, regexPatterns } from "@/utils/const"
 
 import ErrorMsg from "./ErrorMsg"
 
