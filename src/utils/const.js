@@ -58,7 +58,7 @@ export const API = {
   },
   updateUser: async (userData) => {
     try {
-      const { data } = await instance.put('user/update', userData)
+      const { data } = await instance.put('users/update', userData)
 
       return data
     } catch ({ message, response }) {
