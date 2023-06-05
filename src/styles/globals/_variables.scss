@@ -1,0 +1,17 @@
+:root {
+  --base-transition: all 0.3s ease-in-out;
+
+  /* fonts */
+  --font-size-base: 18px;
+  --line-height-base: (20/16);
+
+  /* colors */
+  --color-primary: #3F72AF;
+  --color-primary-dark: #112D4E;
+  --color-primary-light: #DBE2EF;
+
+  --color-primary-bg: #F9F7F7;
+
+  --color-error: #F67280;
+  --color-success: #30E3CA;
+}

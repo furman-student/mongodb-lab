@@ -1,0 +1,41 @@
+$breakpoints: (
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1152,
+  xxl: 1440,
+  ) !default;
+
+@mixin media-up($breakpoint) {
+  $pixels: #{map-get($map: $breakpoints, $key: $breakpoint) - 1}px;
+
+  @media (min-width: $pixels) {
+    @content;
+  }
+}
+
+@mixin media-down($breakpoint) {
+  $pixels: #{map-get($map: $breakpoints, $key: $breakpoint)}px;
+
+  @media (max-width: $pixels) {
+    @content;
+  }
+}
+
+@function decimal-round($number, $digits: 0) {
+  $n: 1;
+
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+
+  @return round($number * $n) / $n;
+}
+
+// relative viewport width value
+@function m-vw($value, $maxContainer: 1440) {
+  $number: $value * 100 / $maxContainer;
+  $result: #{decimal-round($number, 2)}vw;
+
+  @return #{calc($result + 1px)};
+}
