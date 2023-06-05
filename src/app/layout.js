@@ -1,6 +1,5 @@
 import "@/styles/globals/index.scss"
 import { Roboto, Roboto_Condensed } from 'next/font/google'
-import { UsersContextProvider } from "@/utils/usersContext"
 
 export const roboto = Roboto({
   variable: '--font-primary',
@@ -23,9 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoCondensed.variable}`}>
-        <UsersContextProvider>
-          {children}
-        </UsersContextProvider>
+        {children}
       </body>
     </html>
   )

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useCallback, useMemo } from "react"
 
 const UsersContext = createContext()
 
@@ -6,17 +6,20 @@ export const UsersContextProvider = (props) => {
   const [currentUsers, setCurrentUsers] = useState([])
 
   // handlers
-  const addUser = (user) => setCurrentUsers(prev => [...prev, user])
+  const addUser = useCallback(
+    (user) => setCurrentUsers(prev => [...prev, user]),
+    [],
+  )
 
   // context object
-  const context = {
+  const values = useMemo(() => ({
     addUser,
     currentUsers,
     setCurrentUsers
-  }
+  }), [])
 
   return (
-    <UsersContext.Provider value={context}>
+    <UsersContext.Provider value={values}>
       {props.children}
     </UsersContext.Provider>
   )
