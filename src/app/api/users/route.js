@@ -3,7 +3,7 @@ import clientPromise from "@/utils/mongodb"
 
 export async function GET(req) {
   try {
-    const { query } = req
+    const position = req?.nextUrl?.searchParams?.get('position')
 
     const client = await clientPromise
     const db = client.db("education_module")
@@ -15,8 +15,8 @@ export async function GET(req) {
 
     let findOptions = {}
 
-    if (query?.position) {
-      const currentPosition = positions.find(position => position.slug === query.position)
+    if (position) {
+      const currentPosition = positions.find(i => i.value === position)
       findOptions = { position: currentPosition._id }
     }
 

@@ -60,26 +60,28 @@ export default function Dashboard() {
       </div>
 
       <div className={styles.tableWrapper}>
-        <table className={styles.table}>
-          <tr>
-            <th>Full Name</th>
-            <th>Position</th>
-            <th>Username</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th>Phone</th>
-          </tr>
-          {currentUsers?.map((user, index) => <tr key={index}>
-            <td>{user.fullName}</td>
-            <td>{user.position}</td>
-            <td>{user.username}</td>
-            <td>{user.age}</td>
-            <td>{user.email}</td>
-            <td>{user.phone}</td>
-          </tr>)}
-        </table>
+        {currentUsers?.length > 0 && <table className={styles.table}>
+          <tbody>
+            <tr>
+              <th>Full Name</th>
+              <th>Position</th>
+              <th>Username</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+            {currentUsers?.map((user, index) => <tr key={index}>
+              <td>{user.fullName}</td>
+              <td>{user.position}</td>
+              <td>{user.username}</td>
+              <td>{user.age}</td>
+              <td>{user.email}</td>
+              <td>{user.phone}</td>
+            </tr>)}
+          </tbody>
+        </table>}
 
-        <Loader isLoading={isLoading} />
+        <Loader loading={isLoading} />
       </div>
     </div>)
 }
