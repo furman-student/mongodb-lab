@@ -1,4 +1,4 @@
-export default function RegisterForm() {
+export default function Register() {
   return (
     <div>RegisterForm</div>
   )

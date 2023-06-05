@@ -1,0 +1,111 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4vw 2vw;
+}
+
+.mainTitle {
+  font-size: clamp(18px, 3vw, 48px);
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: clamp(12px, 1.5vw, 32px);
+}
+
+.filters {
+  display: flex;
+  margin-bottom: clamp(12px, 1.5vw, 32px);
+}
+
+.filter {
+  position: relative;
+
+  select {
+    cursor: pointer;
+    appearance: none;
+    outline: none;
+    width: fit-content;
+    line-height: 1;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    padding-right: 32px;
+    background-color: transparent;
+    color: var(--color-primary-dark);
+    transition: var(--base-transition);
+    border: 1px solid var(--color-primary-dark);
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+    }
+  }
+
+  select ~ span {
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--color-primary-dark);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &:hover select ~ span,
+  select:focus ~ span {
+    background-color: var(--color-primary);
+  }
+}
+
+.table {
+  box-shadow: 0 0 0 1px var(--color-primary-dark) inset;
+
+  th,
+  td {
+    padding: 8px 16px;
+    white-space: nowrap;
+    box-shadow: 0 0 0 1px var(--color-primary-dark);
+  }
+
+  th {
+    text-align: left;
+    color: var(--color-primary-light);
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0 0 1px var(--color-primary-light);
+  }
+}
+
+.tableWrapper {
+  width: fit-content;
+  max-width: 100%;
+  min-height: 430px;
+  overflow-x: scroll;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-primary-light);
+
+  &[data-loading="true"] {
+    opacity: 1;
+    visibility: visible;
+  }
+}
