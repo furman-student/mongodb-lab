@@ -20,7 +20,7 @@ export const errorMessages = new Map([
   ['usernameExists', 'Looks like a user with this username is already registered'],
 ])
 
-const instance = axios.create({ baseURL: `${process.env.DOMAIN_API}api/` })
+const instance = axios.create({ baseURL: `/api/` })
 
 export const API = {
   getUsers: async (query) => {
