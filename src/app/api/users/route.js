@@ -3,7 +3,8 @@ import clientPromise from "@/utils/mongodb"
 
 export async function GET(req) {
   try {
-    const position = req?.nextUrl?.searchParams?.get('position')
+    const { searchParams } = new URL(req?.url)
+    const position = searchParams?.get('position')
 
     const client = await clientPromise
     const db = client.db("education_module")
@@ -17,7 +18,7 @@ export async function GET(req) {
 
     if (position) {
       const currentPosition = positions.find(i => i.value === position)
-      findOptions = { position: currentPosition._id }
+      if (currentPosition) findOptions = { position: currentPosition._id }
     }
 
     let users = await db
@@ -26,7 +27,7 @@ export async function GET(req) {
       .toArray()
 
     users.forEach(user => {
-      const match = positions.find(position => user.position.equals(position._id))
+      const match = positions.find(i => user.position.equals(i._id))
       if (match) user.position = match.name
     })
 

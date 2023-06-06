@@ -16,5 +16,8 @@
     "next-auth": "^4.22.1",
     "react-hook-form": "^7.44.3",
     "sass": "^1.62.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0"
   }
 }
