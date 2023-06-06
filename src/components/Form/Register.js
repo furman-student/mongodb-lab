@@ -22,7 +22,7 @@ export default function Register() {
   const { addUser } = useContext(UsersContext)
 
   const onSubmit = async (formData) => {
-    const { status, data } = await API.register(formData)
+    const { status, types } = await API.register(formData)
 
     if (status === 201) {
       addUser(formData)
@@ -31,7 +31,7 @@ export default function Register() {
     }
 
     // display errors
-    const errorTypes = data?.types ?? []
+    const errorTypes = types ?? []
 
     if (errorTypes.some(type => type === 'emailExists')) {
       setError('email', { type: 'emailExists' })
@@ -156,11 +156,11 @@ export default function Register() {
 
         <div className={styles.field}>
           <select {...register("position")}>
-            <option value="pos_1">Account Manager</option>
-            <option value="pos_2">Developer</option>
-            <option value="pos_3">Team Leader</option>
-            <option value="pos_4">HR Representative</option>
-            <option value="pos_5">Office Manager</option>
+            <option value="account_manager">Account Manager</option>
+            <option value="developer">Developer</option>
+            <option value="team_leader">Team Leader</option>
+            <option value="hr_representative">HR Representative</option>
+            <option value="office_manager">Office Manager</option>
           </select>
           <label htmlFor="position">Position</label>
           <span></span>
